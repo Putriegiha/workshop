@@ -4,7 +4,7 @@
    @include('includes.head')
 </head>
 <body>
-    @include('layouts.shop.navbar')
+    @include('layouts..navbar')
 
     <div>
         @yield('konten')

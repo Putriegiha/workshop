@@ -4,3 +4,5 @@
   <a href="{{ route('seller.dashboard-seller') }}" class="navbar-brand text-white">Seller</a>
   <span class="navbar-brand text-white">ALMERCH</span>
 </nav>
+
+
