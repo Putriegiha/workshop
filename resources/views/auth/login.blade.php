@@ -53,12 +53,9 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <form action="{{route('loginRequest')}}" method="post">
-                                    @csrf
                                     <button type="submit" class="btn btn-primary"> 
                                         login
                                     </button>
-                                </form>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">

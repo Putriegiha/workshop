@@ -2,14 +2,14 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DashboardPembayaranController;
-use App\Http\Controllers\DashboardPembeliController;
-use App\Http\Controllers\DashboardPesananController;
+use App\Http\Controllers\DashboardPemesananController;
+use App\Http\Controllers\DashboardPemesananDetailController;
 use App\Http\Controllers\DashboardProdukController;
+use App\Http\Controllers\DetailProdukController;
 use App\Http\Controllers\KeranjangController;
-use App\Http\Controllers\PembayaranController;
-use App\Http\Controllers\PesananController;
+use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,49 +51,37 @@ Route::controller(DashboardController::class)->group(function () {
     Route::get('/dashboard', 'halamanUtama')->name('dashboard.halaman-utama');
 });
 
-Route::controller(DashboardProdukController::class)->group(function () {
-    Route::get('/dashboard/produk', 'dashboardProduk')->name('produk.dashboard-produk');
-});
-Route::get('dashboard/produk/formtambah', [DashboardProdukController::class, 'formTambah'])
-    ->name('dashboard.produk.formTambah');
-Route::post('dashboard/produk/tambah', [DashboardProdukController::class, 'tambah'])
-    ->name('dashboard.produk.tambah');
-Route::get('dashboard/produk/form-edit', [DashboardProdukController::class, 'formEdit'])
-    ->name('dashboard.produk.form-edit');
-Route::put('dashboard/produk//edit', [DashboardProdukController::class, 'edit'])
-    ->name('dashboard.produk.edit');
+Route::prefix('dashboard/produk')
+    ->controller(DashboardProdukController::class)
+    ->group(function () {
+        Route::get('', 'dashboardProduk')->name('dashboard.produk.list');
+        Route::get('formtambah', 'formTambah')->name('dashboard.produk.formTambah');
+        Route::post('tambah', 'tambah')->name('dashboard.produk.tambah');
+        Route::get('form-edit/{produk}', 'formEdit')
+            ->withTrashed()
+            ->name('dashboard.produk.form-edit');
+        Route::put('edit/{produk}', 'edit')
+            ->withTrashed()
+            ->name('dashboard.produk.edit');
+        Route::post('memulihkan/{produk}', 'memulihkan')
+            ->withTrashed()
+            ->name('dashboard.produk.memulihkan');
+        Route::delete('hapus/{produk}', 'hapus')->name('dashboard.produk.hapus');
+    });
 
-Route::controller(DashboardPesananController::class)->group(function () {
-    Route::get('/dashboard/pesanan', 'dashboardPesanan')->name('pesanan.dashboard-pesanan');
-});
-Route::get('dashboard/pesanan/formtambah', [DashboardPesananController::class, 'formTambah'])
-    ->name('dashboard.pesanan.formTambah');
-Route::post('dashboard/pesanan/tambah', [DashboardPesananController::class, 'tambah'])
-    ->name('dashboard.pesanan.tambah');
-Route::get('dashboard/pesanan/form-edit', [DashboardPesananController::class, 'formEdit'])
-    ->name('dashboard.pesanan.form-edit');
-Route::put('dashboard/pesanan/edit', [DashboardPesananController::class, 'edit'])
-    ->name('dashboard.pesanan.edit');
+Route::prefix('dashboard/pemesanan/{pemesanan}')
+    ->controller(DashboardPemesananDetailController::class)
+    ->group(function () {
+        Route::get('', 'pemesananDetail')->name('dashboard.pemesanan.detail');
+    });
 
-
-Route::get('dashboard/pembeli', [DashboardPembeliController::class, 'halamanPembeli'])
-    ->name('dashboard.pembeli.dashboardPembeli');
-Route::get('dashboard/pembeli/formtambah', [DashboardPembeliController::class, 'formTambah'])
-    ->name('dashboard.pembeli.formTambah');
-Route::post('dashboard/pembeli/tambah', [DashboardPembeliController::class, 'tambah'])
-    ->name('dashboard.pembeli.tambah');
-Route::get('dashboard/pembeli/form-edit', [DashboardPembeliController::class, 'formEdit'])
-    ->name('dashboard.pembeli.form-edit');
-Route::put('dashboard/pembeli//edit', [DashboardPembeliController::class, 'edit'])
-    ->name('dashboard.pembeli.edit');
-
-
-Route::get('dashboard/pembayaran', [DashboardPembayaranController::class, 'halamanPembeli'])
-    ->name('dashboard.pembayaran.dashboardPembayaran');
-Route::get('dashboard/pembayaran/formtambah', [DashboardPembayaranController::class, 'formTambah'])
-    ->name('dashboard.pembayaran.formTambah');
-Route::post('dashboard/pembayaran/tambah', [DashboardPembayaranController::class, 'tambah'])
-    ->name('dashboard.pembayaran.tambah');
+Route::prefix('dashboard/pemesanan')
+    ->controller(DashboardPemesananController::class)
+    ->group(function () {
+        Route::get('', 'dashboardPemesanan')->name('pemesanan.dashboard-pemesanan');
+        Route::get('form-edit/{pemesanan}', 'formEdit')->name('dashboard.pemesanan.form-edit');
+        Route::put('edit/{pemesanan}', 'edit')->name('dashboard.pemesanan.edit');
+    });
 
 
 
@@ -105,63 +93,39 @@ Route::controller(ShopController::class)->group(function () {
     Route::get('/', 'home')->name('home');
 });
 
-Route::controller(KeranjangController::class)->group(function () {
-    Route::get('/keranjang', 'keranjang')->name('keranjang');
+Route::controller(DetailProdukController::class)->group(function () {
+    Route::get('/detailproduk', 'detailProduk')->name('detailProduk');
 });
-Route::get('keranjang/formtambah', [KeranjangController::class, 'formTambah'])
-    ->name('keranjang.formTambah');
-Route::post('keranjang/tambah', [KeranjangController::class, 'tambah'])
-    ->name('keranjang.tambah');
-Route::get('keranjang/form-edit', [KeranjangController::class, 'formEdit'])
-    ->name('kernajang.form-edit');
-Route::put('keranjang/edit', [KeranjangController::class, 'edit'])
-    ->name('keranjang.edit');
 
-Route::controller(PesananController::class)->group(function () {
-    Route::get('/pesanan', 'pesanan')->name('pesanan');
-});
-Route::get('pesanan/formtambah', [PesananController::class, 'formTambah'])
-    ->name('pesanan.formTambah');
-Route::post('pesanan/tambah', [PesananController::class, 'tambah'])
-    ->name('pesanan.tambah');
-Route::get('pesanan/form-edit', [PesananController::class, 'formEdit'])
-    ->name('pesanan.form-edit');
-Route::put('pesanan/edit', [PesananController::class, 'edit'])
-    ->name('pesanan.edit');
+Route::prefix('/keranjang')
+    ->controller(KeranjangController::class)
+    ->group(function () {
+        Route::get('', 'keranjang')->name('shop.keranjang');
+        Route::get('form-edit/{keranjang}', 'formEdit')->name('shop.keranjnag.form-edit');
+        Route::put('edit/{keranjang}', 'edit')->name('shop.keranjang.edit');
+        Route::delete('/keranjnag/{keranjang}', 'hapus')->name('shop.keranjang.hapus');
+    });
 
-Route::controller(PembayaranController::class)->group(function () {
-    Route::get('/pembayaran', 'pembayaran')->name('pembayaran');
-});
-Route::get('pemabayaran/formtambah', [PembayaranController::class, 'formTambah'])
-    ->name('pemabayaran.formTambah');
-Route::post('pemabayaran/tambah', [PembayaranController::class, 'tambah'])
-    ->name('pemabayaran.tambah');
-Route::get('pemabayaran/form-edit', [PembayaranController::class, 'formEdit'])
-    ->name('pemabayaran.form-edit');
-Route::put('pemabayaran/edit', [PembayaranController::class, 'edit'])
-    ->name('pemabayaran.edit');
+Route::prefix('/checkout')
+    ->controller(CheckoutController::class)
+    ->group(function () {
+        Route::get('', 'checkout')->name('shop.checkout.halaman-checkout');
+        Route::get('form-edit/{pemesanan}', 'formEdit')->name('shop.pemesanan.form-edit');
+        Route::put('edit/{pemesanan}', 'edit')->name('shop.pemesanan.edit');
+    });
 
+Route::prefix('/pemesanan')
+    ->controller(PemesananController::class)
+    ->group(function () {
+        Route::get('', 'pemesanan')->name('shop.pemesanan');
+        Route::get('pemesanan/{pemesanan}', 'tampil')->name('shop.pemesanan.list-pemesanan');
+        Route::put('edit/{pemesanan}', 'edit')->name('shop.pemesanan.edit');
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Route::get('dashboard/barang/tambah', [BarangController::class, 'formTambah'])
-    ->name('dashboard.barang.form-tambah');
-Route::post('dashboard/barang/tambah', [BarangController::class, 'tambah'])
-    ->name('dashboard.barang.tambah');
+Route::prefix('/detailpemesanan')
+    ->controller(PemesananController::class)
+    ->group(function () {
+        Route::get('', 'detailPemesanan')->name('shop.detail-pemesanan');
+        Route::get('pemesanan/{pemesanan}', 'tampil')->name('shop.pemesanan.list-pemesanan');
+        Route::put('edit/{pemesanan}', 'edit')->name('shop.pemesanan.edit');
+    });

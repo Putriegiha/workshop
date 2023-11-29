@@ -9,8 +9,8 @@
                 <img class="w-100" src="https://i.pinimg.com/736x/cd/aa/bd/cdaabd48792d3a2aa2c0d6cffe11fb06--pop-albums-the-artist.jpg" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3" style="max-width: 700px;">
-                        <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Toko ALbum Terpercaya</h6>
-                        <h1 class="display-3 text-white mb-4 animated slideInDown">WELCOME</h1>
+                        <h1 class="display-3 text-white mb-4 animated slideInDown">SELAMAT DATANG</h1>
+                        <h5 class="text-white text-uppercase mb-3 animated slideInDown">Almerch</h5>
                     </div>
                 </div>
             </div>
@@ -18,10 +18,10 @@
                 <img class="w-100" src="https://i.pinimg.com/736x/cd/aa/bd/cdaabd48792d3a2aa2c0d6cffe11fb06--pop-albums-the-artist.jpg" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3" style="max-width: 700px;">
-                        <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Toko Album Terpercaya</h6>
-                        <h1 class="display-3 text-white mb-4 animated slideInDown">WELCOME</h1>
-                        <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Register</a>
-                        <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Login</a>
+                        <h6 class="text-white mb-3 animated slideInDown">Toko album 'ALMERCH' sangat terpercaya. Hanya di Almerch teman-teman bisa membeli album dengan mudah, tanpa kesulitan!</h6>
+                        <h5 class="text-white mb-3 animated slideInDown">YUK BURUAN BELI!</h5>
+
+        
                     </div>
                 </div>
             </div>
@@ -53,8 +53,8 @@
                 </div>
                 <p class="text-body mb-3">Album ke-3 NCT Dream yang menceritakan tentang makanan pedas</p>
                 <div class="d-flex justify-content-between">
-                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">View Detail</a>
-                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Order</a>
+                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="{{route('detailProduk')}}">View Detail</a>
+                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="{{route('shop.keranjang')}}">Order</a>
                 </div>
             </div>
         </div>
@@ -71,8 +71,8 @@
                 </div>
                 <p class="text-body mb-3">Album ke-3 NCT Dream yang menceritakan tentang makanan pedas</p>
                 <div class="d-flex justify-content-between">
-                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">View Detail</a>
-                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Order</a>
+                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="{{route('detailProduk')}}">View Detail</a>
+                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="{{route('shop.keranjang')}}">Order</a>
                 </div>
             </div>
         </div>
@@ -89,8 +89,8 @@
                 </div>
                 <p class="text-body mb-3">Album ke-3 NCT Dream yang menceritakan tentang makanan pedas</p>
                 <div class="d-flex justify-content-between">
-                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">View Detail</a>
-                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Order</a>
+                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="{{route('detailProduk')}}">View Detail</a>
+                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="{{route('shop.keranjang')}}">Order</a>
                 </div>
             </div>
         </div>
@@ -111,8 +111,8 @@
                 </div>
                 <p class="text-body mb-3">Album ke-4 NCT Dream yang menceritakan tentang masa depan.</p>
                 <div class="d-flex justify-content-between">
-                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">View Detail</a>
-                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Order</a>
+                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="{{route('detailProduk')}}">View Detail</a>
+                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="{{route('shop.keranjang')}}">Order</a>
                 </div>
             </div>
         </div>
@@ -129,8 +129,8 @@
                 </div>
                 <p class="text-body mb-3">Album ke-3 NCT Dream yang menceritakan tentang masa depan.</p>
                 <div class="d-flex justify-content-between">
-                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">View Detail</a>
-                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Order</a>
+                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="{{route('detailProduk')}}">View Detail</a>
+                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="{{route('shop.keranjang')}}">Order</a>
                 </div>
             </div>
         </div>
@@ -148,8 +148,8 @@
                 </div>
                 <p class="text-body mb-3">Album ke-3 NCT Dream yang menceritakan tentang masa depan</p>
                 <div class="d-flex justify-content-between">
-                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">View Detail</a>
-                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Order</a>
+                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="{{route('detailProduk')}}">View Detail</a>
+                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="{{route('shop.keranjang')}}">Order</a>
                 </div>
             </div>
         </div>
